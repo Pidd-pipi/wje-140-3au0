@@ -8,6 +8,7 @@ import { DispatchController } from './controllers/dispatch.controller';
 import { MaintenanceController } from './controllers/maintenance.controller';
 import { FuelController } from './controllers/fuel.controller';
 import { CostController } from './controllers/cost.controller';
+import { VehicleRetirementController } from './controllers/vehicleRetirement.controller';
 import { VehicleService } from './services/vehicle.service';
 import { DriverService } from './services/driver.service';
 import { DispatchService } from './services/dispatch.service';
@@ -15,14 +16,15 @@ import { MaintenanceService } from './services/maintenance.service';
 import { FuelService } from './services/fuel.service';
 import { CostService } from './services/cost.service';
 import { AnalyticsService } from './services/analytics.service';
+import { VehicleRetirementService } from './services/vehicleRetirement.service';
 import { RequestLoggerMiddleware } from './middlewares/requestLogger.middleware';
 import { AuditLogMiddleware } from './middlewares/auditLog.middleware';
 import { RateLimitMiddleware } from './middlewares/rateLimit.middleware';
 
 @Module({
   imports: [TypeOrmModule.forRoot(databaseConfig)],
-  controllers: [HealthController, VehicleController, DriverController, DispatchController, MaintenanceController, FuelController, CostController],
-  providers: [VehicleService, DriverService, DispatchService, MaintenanceService, FuelService, CostService, AnalyticsService]
+  controllers: [HealthController, VehicleController, DriverController, DispatchController, MaintenanceController, FuelController, CostController, VehicleRetirementController],
+  providers: [VehicleService, DriverService, DispatchService, MaintenanceService, FuelService, CostService, AnalyticsService, VehicleRetirementService]
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
